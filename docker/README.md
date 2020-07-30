@@ -1,4 +1,4 @@
-Docker
+Ansible role: Docker
 =========
 
 This role is child role of container_runtime and used to install and configure docker.
