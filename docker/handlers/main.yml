@@ -1,0 +1,19 @@
+---
+# handlers file for container_runtime/docker
+- name: start docker
+  systemd:
+    daemon_reload: yes
+    name: docker
+    state: started
+
+- name: stop docker
+  systemd:
+    daemon_reload: yes
+    name: docker
+    state: stopped
+
+- name: restart docker
+  systemd:
+    daemon_reload: yes
+    name: docker
+    state: restarted

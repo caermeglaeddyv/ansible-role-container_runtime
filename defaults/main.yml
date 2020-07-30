@@ -1,0 +1,7 @@
+---
+# defaults file for comtainer_runtime
+
+
+# The name of container runtime that will be installed,
+# role with this name for chosen runtime will be loaded and executed:
+container_runtime_name: docker

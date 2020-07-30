@@ -1,0 +1,37 @@
+---
+# tasks file for roles/container_runtime/docker
+- name: add docker-ce yum repo
+  yum_repository:
+    name: docker-ce
+    description: Docker CE Stable repo
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    gpgcheck: yes
+
+- name: install docker-ce
+  yum:
+    name:
+    - "docker-ce-{{ docker_ce_version }}"
+    - "containerd.io-{{ docker_containerd_version }}"
+    state: present
+    allow_downgrade: yes
+
+- name: start docker
+  systemd:
+    daemon_reload: yes
+    name: docker
+    enabled: yes
+    state: started
+
+- name: configure docker daemon.json
+  template:
+    src: etc_docker_daemon.json.j2
+    dest: /etc/docker/daemon.json
+
+- name: create docker systemd directory
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0750
+  notify:
+  - restart docker

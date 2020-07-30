@@ -1,0 +1,9 @@
+---
+# defaults file for comtainer-runtime/docker
+
+
+# Version of docker community edition to install:
+docker_ce_version: 18.06.2.ce
+
+# Version of containerd package to install:
+docker_containerd_version: 1.2.10
