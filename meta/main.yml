@@ -17,6 +17,6 @@ galaxy_info:
   - containerd
 
 dependencies:
-- role: container_runtime/docker
+- role: caermeglaeddyv.ansible_role_container_runtime/docker
   when:
   - container_runtime_name == 'docker'
